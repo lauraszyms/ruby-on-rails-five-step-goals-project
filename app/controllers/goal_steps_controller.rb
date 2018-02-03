@@ -1,0 +1,2 @@
+class GoalStepsController < ApplicationController
+end
