@@ -1,0 +1,8 @@
+<h1>Welcome to Five Step Goals!</h1>
+<h3>See what other FSG users have accomplished:</h3>
+
+<% @main_goals.each do |main_goal| %>
+  <% if @main_goal.status == "Success!" %>
+    <p><%= link_to "#{main_goal.name}", main_goal_path(main_goal) %></p>
+    <% end %>
+<% end %>
