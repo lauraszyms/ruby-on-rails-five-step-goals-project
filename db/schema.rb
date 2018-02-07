@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180203050358) do
+ActiveRecord::Schema.define(version: 20180207064040) do
 
   create_table "goal_steps", force: :cascade do |t|
     t.string "name"
@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 20180203050358) do
     t.text "summary"
     t.string "status"
     t.integer "point_value"
-    t.integer "user_id"
     t.integer "main_goal_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -31,6 +30,7 @@ ActiveRecord::Schema.define(version: 20180203050358) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
