@@ -1,4 +1,8 @@
 <h1>Welcome to Five Step Goals!</h1>
+<% if user_signed_in? %>
+<h3>Create a New Goal</h3>
+<%= link_to "New Goal", new_main_goal_path %>
+<% end %>
 <h3>See what other FSG users have accomplished:</h3>
 
 <% @main_goals.each do |main_goal| %>

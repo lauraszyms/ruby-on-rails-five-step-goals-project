@@ -2,6 +2,6 @@
 <h3><%= @main_goal.status %></h3>
 <p><%= @main_goal.summary %></p>
 
-<% @goal_steps.each do |goal_step| %>
-    <p><%= link_to "#{goal_step.name}", goal_step_path(goal_step) %></p>
+<% if current_user == @main_goal.user_id %>
+  <%= link_to "Edit Goal", edit_main_goal_path %>
 <% end %>
