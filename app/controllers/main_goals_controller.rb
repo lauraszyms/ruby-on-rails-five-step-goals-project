@@ -16,7 +16,9 @@ class MainGoalsController < ApplicationController
   def create
     @main_goal = MainGoal.create(main_goal_params)
     @main_goal.status = "Incomplete"
+    @main_goal.user_id = current_user.id
     @main_goal.save
+    binding.pry
     redirect_to @main_goal
   end
 
@@ -32,6 +34,6 @@ class MainGoalsController < ApplicationController
 
   private
     def main_goal_params
-        params.require(:main_goal).permit(:name, :category, :summary, :status)
+        params.require(:main_goal).permit(:name, :category, :summary, :status, :user_id)
     end
 end
