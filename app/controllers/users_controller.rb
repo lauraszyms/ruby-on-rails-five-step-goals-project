@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
   def show
-    @main_goal = MainGoal.find_by(:id => params[:id])
+    @user = current_user
   end
 end
