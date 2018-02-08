@@ -11,11 +11,16 @@ class MainGoalsController < ApplicationController
 
   def new
     @main_goal = MainGoal.new
+    @categories = Category.all
+    @main_goal.goal_steps.build
+    @main_goal.goal_steps.build
+    @main_goal.goal_steps.build
+    @main_goal.goal_steps.build
+    @main_goal.goal_steps.build
   end
 
   def create
     @main_goal = MainGoal.create(main_goal_params)
-    @main_goal.status = "Incomplete"
     @main_goal.user_id = current_user.id
     @main_goal.save
     redirect_to @main_goal
@@ -40,6 +45,17 @@ class MainGoalsController < ApplicationController
   end
 
   def main_goal_params
-    params.require(:main_goal).permit(:name, :category, :summary, :status, :user_id)
-  end
+      params.require(:main_goal).permit(
+        :title,
+        :summary,
+        :status,
+        category_ids:[],
+        categories_attributes: [:name],
+        goal_steps_attributes: [
+          :title,
+          :summary,
+          :status
+        ]
+      )
+    end
 end

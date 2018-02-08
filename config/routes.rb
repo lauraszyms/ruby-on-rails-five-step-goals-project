@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :categories
   root to: 'main_goals#index'
   devise_for :users
   resources :goal_steps

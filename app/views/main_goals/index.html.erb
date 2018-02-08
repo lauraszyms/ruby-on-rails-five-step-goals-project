@@ -5,5 +5,5 @@
 <% end %>
 <h3>All Goals:</h3>
 <% @main_goals.each do |main_goal| %>
-    <p><%= link_to "#{main_goal.name} - #{main_goal.status}", main_goal_path(main_goal) %></p>
+    <p><%= link_to "#{main_goal.title} - #{main_goal.status}", main_goal_path(main_goal) %></p>
 <% end %>

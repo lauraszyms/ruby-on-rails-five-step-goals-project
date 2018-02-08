@@ -40,6 +40,6 @@ class GoalStepsController < ApplicationController
   end
 
   def goal_step_params
-    params.require(:goal_step).permit(:name, :summary, :status, :main_goal_id)
+    params.require(:goal_step).permit(:title, :summary, :status, :main_goal_id)
   end
 end
