@@ -2,11 +2,10 @@
 <h3><%= @goal_step.status %></h3>
 <p><%= @goal_step.summary %></p>
 
-<%= form_for @goal_step do |f| %>
+
+<%= form_for(@goal_step, url: { action: "update" }) do |f| %>
   <%= f.hidden_field :status, value: "Completed" %>
   <%= f.submit "Completed",data: { confirm: 'Congrats on acheiving your goal!' }  %>
-<% end %>
+<% end %><br>
 
-<%= link_to "Main Goal", main_goal_path(@goal_step.main_goal_id) %>
-<%= link_to "Edit Goal", edit_goal_step_path %>
-<%= link_to 'Destroy', @goal_step, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to "Main Goal", main_goal_path(@goal_step.main_goal_id) %><br>

@@ -25,7 +25,7 @@ class GoalStepsController < ApplicationController
 
   def update
     @goal_step.update(goal_step_params)
-    redirect_to @goal_step
+    redirect_to main_goal_goal_step_path(@goal_step.main_goal_id, @goal_step)
   end
 
   def destroy
