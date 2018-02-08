@@ -7,7 +7,8 @@ class MainGoal < ApplicationRecord
   belongs_to :user, optional: true
   validates :title, presence: true
   validates :summary, length: { maximum: 200 }
-  scope :status, -> { where(status: "Completed") }
-
+  scope :completed, -> { where(status: "Completed") }
+  scope :in_progress, -> { where(status: "In Progress") }
+  scope :overdue, -> { where('created_at >= ?', Time.now - 31.days) }
 
 end
