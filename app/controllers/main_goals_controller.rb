@@ -23,6 +23,7 @@ class MainGoalsController < ApplicationController
   def create
     @main_goal = MainGoal.create(main_goal_params)
     @main_goal.user_id = current_user.id
+    @main_goal.duedate = @main_goal.created_at+30.day
     @main_goal.save
     redirect_to @main_goal
   end
@@ -50,6 +51,7 @@ class MainGoalsController < ApplicationController
         :title,
         :summary,
         :status,
+        :duedate,
         category_ids:[],
         categories_attributes: [:name],
         goal_steps_attributes: [

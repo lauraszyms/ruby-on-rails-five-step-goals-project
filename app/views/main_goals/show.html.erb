@@ -1,5 +1,6 @@
 <h1><%= @main_goal.title %></h1>
 <h3><%= @main_goal.status %></h3>
+<h3>Due<%= @main_goal.duedate.to_time.strftime('%B %e') %></h3>
 <p><%= @main_goal.summary %></p>
 
 <h3>Goals Steps:</h3>
@@ -7,7 +8,7 @@
     <p><%= link_to "#{goal_step.title} - #{goal_step.status}", goal_step_path(goal_step) %></p>
  <% end %>
 
- 
+
 
   <%= form_for @main_goal do |f| %>
     <%= f.hidden_field :status, value: "Completed" %>
