@@ -1,0 +1,7 @@
+<h1><%= @category.title %></h1>
+
+<ul>
+<% @category.main_goals.each do |main_goal| %>
+    <li><%= link_to main_goal.title, main_goal_path(main_goal) %></li>
+<% end %>
+</ul>

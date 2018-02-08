@@ -3,6 +3,7 @@ class MainGoalsController < ApplicationController
 
   def index
    @main_goals = MainGoal.all
+   @categories = Category.all
   end
 
   def show

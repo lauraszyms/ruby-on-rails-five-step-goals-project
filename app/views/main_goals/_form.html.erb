@@ -1,6 +1,12 @@
 <%= form_for @main_goal do |f| %>
-  Goal Title: <%= f.text_field :title %>
-  Goal Summary: <%= f.text_field :summary %><br><br>
+  <p>Goal Title: <%= f.text_field :title %></p>
+  <p>Goal Summary: <%= f.text_field :summary %><br><br></p>
+
+  Categories: <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
+  <h4>Or create a New Category</h4>
+  <%= f.fields_for :categories, @main_goal.categories.build do |categories| %>
+    <%= categories.text_field :name %><br><br>
+  <% end %>
 
  Enter five mini goals to work towards your main goal:<br><br>
   <%= f.fields_for :goal_steps do |goal_step| %>
