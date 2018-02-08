@@ -1,11 +1,11 @@
 class MainGoalsController < ApplicationController
+  before_action :set_main_goal, only: [:show, :edit, :update, :destroy]
 
   def index
    @main_goals = MainGoal.all
   end
 
   def show
-   @main_goal = MainGoal.find_by(:id => params[:id])
    @user = current_user
   end
 
@@ -18,22 +18,28 @@ class MainGoalsController < ApplicationController
     @main_goal.status = "Incomplete"
     @main_goal.user_id = current_user.id
     @main_goal.save
-    binding.pry
     redirect_to @main_goal
   end
 
   def edit
-    @main_goal = MainGoal.find_by(:id => params[:id])
   end
 
   def update
-    @main_goal = MainGoal.find_by(:id => params[:id])
     @main_goal.update(main_goal_params)
     redirect_to @main_goal
   end
 
+  def destroy
+   @main_goal.destroy
+   redirect_to root_path
+  end
+
   private
-    def main_goal_params
-        params.require(:main_goal).permit(:name, :category, :summary, :status, :user_id)
-    end
+  def set_main_goal
+    @main_goal = MainGoal.find_by(:id => params[:id])
+  end
+
+  def main_goal_params
+    params.require(:main_goal).permit(:name, :category, :summary, :status, :user_id)
+  end
 end
