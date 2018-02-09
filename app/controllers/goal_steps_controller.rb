@@ -7,11 +7,12 @@ class GoalStepsController < ApplicationController
 
   def show
    @user = current_user
+   @main_goal = MainGoal.find_by(:id => @goal_step.main_goal_id)
   end
 
   def new
     @goal_step = GoalStep.new
-    @main_goal = MainGoal.find_by(@goal_step.main_goal_id)
+    @main_goal = MainGoal.find_by(:id => @goal_step.main_goal_id)
   end
 
   def update
