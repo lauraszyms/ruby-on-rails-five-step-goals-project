@@ -2,7 +2,7 @@
 <p>Stats: <%= @goal_step.status.capitalize %></p>
 <p>summary: <%= @goal_step.summary.capitalize %></p>
 
-<% if current_user.id == @main_goal.user_id %>
+<% if current_user.id == @goal_step.main_goal_id %>
 <%= form_for(@goal_step, url: { action: "update" }) do |f| %>
   <%= f.hidden_field :status, value: "Completed" %>
   <%= f.submit "Completed",data: { confirm: 'Congrats on acheiving your goal!' }  %>
