@@ -1,5 +1,12 @@
-<% @main_goal.goal_steps.each do |goal_step| %>
-   <p><%= link_to "#{goal_step.title} - #{goal_step.status}", main_goal_goal_step_path(@main_goal, goal_step) %></p>
+<h1>Goal Steps for Goal: <%= @main_goal.title %></h1>
+<ol>
+  <% @main_goal.goal_steps.each do |goal_step| %>
+   <li><%= link_to "#{goal_step.title} - #{goal_step.status}", main_goal_goal_step_path(@main_goal, goal_step) %></li>
+<% end %>
+</ol>
+
+<% if @main_goal.goal_steps.length < 5 %>
+ <%= render '/main_goals/goal_step_form' %>
 <% end %>
 
 <%= link_to "Main Goal", main_goal_path(@main_goal) %></p>

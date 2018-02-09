@@ -1,6 +1,6 @@
 class MainGoal < ApplicationRecord
-  has_many :goal_steps
-  has_many :main_goal_categories
+  has_many :goal_steps, dependent: :delete_all
+  has_many :main_goal_categories, dependent: :delete_all
   has_many :categories, through: :main_goal_categories
   accepts_nested_attributes_for :goal_steps
   accepts_nested_attributes_for :categories
@@ -12,7 +12,7 @@ class MainGoal < ApplicationRecord
   scope :overdue, -> { where('created_at >= ?', Time.now - 31.days) }
 
   def categories_attributes=(category_attributes)
-    attribute = category_attributes[0]
+      attribute = category_attributes.values[0]
       category = Category.find_or_create_by(attribute)
       self.categories << category
   end

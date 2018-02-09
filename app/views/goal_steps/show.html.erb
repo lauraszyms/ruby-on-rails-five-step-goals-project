@@ -1,6 +1,6 @@
-<h1><%= @goal_step.title %></h1>
-<h3><%= @goal_step.status %></h3>
-<p><%= @goal_step.summary %></p>
+<h1>Goal: <%= @goal_step.title %></h1>
+<p>Stats: <%= @goal_step.status %></p>
+<p>summary: <%= @goal_step.summary %></p>
 
 
 <%= form_for(@goal_step, url: { action: "update" }) do |f| %>

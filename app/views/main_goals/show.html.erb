@@ -1,21 +1,20 @@
-<h1><%= @main_goal.title %></h1>
-<h3><%= @main_goal.status %></h3>
-<h3>Due <%= @main_goal.duedate.to_time.strftime('%B %e') %></h3>
-<p><%= @main_goal.summary %></p>
+<h1>Goal: <%= @main_goal.title %></h1>
+<p>Status: <%= @main_goal.status %></p>
+<p>Due: <%= @main_goal.duedate.to_time.strftime('%B %e') %></p>
+<p>Summary: <%= @main_goal.summary %></p>
+
+<h4>Categories:</h4>
 <% @main_goal.categories.each do |category| %>
    <p><%= link_to "#{category.name}", category_path(category) %></p>
 <% end %>
 
- <h3>Goals Steps:</h3>
+ <h4>Goals Steps:</h4>
  <p><%= link_to "Goal Steps", main_goal_goal_steps_path(@main_goal) %></p>
 
  <%= form_for @main_goal do |f| %>
     <%= f.hidden_field :status, value: "Completed" %>
-    <%= f.submit "Completed",data: { confirm: 'Congrats on acheiving your goal!' }  %>
-    <% if @main_goal.goal_steps.length < 5 %>
-    <%= render 'goal_step_form' %>
-    <% end %>
+    <%= f.submit "Goal Completed",data: { confirm: 'Congrats on acheiving your goal!' }  %>
   <% end %>
 
-<%= link_to 'Destroy', @main_goal, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Delete Goal', @main_goal, method: :delete, data: { confirm: 'Are you sure?' } %><br>
 <%= link_to "Edit Goal", edit_main_goal_path %>

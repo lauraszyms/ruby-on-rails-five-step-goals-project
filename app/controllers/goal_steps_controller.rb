@@ -14,12 +14,6 @@ class GoalStepsController < ApplicationController
     @main_goal = MainGoal.find_by(@goal_step.main_goal_id)
   end
 
-  def create
-  end
-
-  def edit
-  end
-
   def update
     @goal_step.update(goal_step_params)
     redirect_to main_goal_goal_step_path(@goal_step.main_goal_id, @goal_step)
