@@ -1,6 +1,6 @@
 <h1><%= @main_goal.title %></h1>
 <h3><%= @main_goal.status %></h3>
-<h3>Due<%= @main_goal.duedate.to_time.strftime('%B %e') %></h3>
+<h3>Due <%= @main_goal.duedate.to_time.strftime('%B %e') %></h3>
 <p><%= @main_goal.summary %></p>
 
  <h3>Goals Steps:</h3>
@@ -11,6 +11,9 @@
  <%= form_for @main_goal do |f| %>
     <%= f.hidden_field :status, value: "Completed" %>
     <%= f.submit "Completed",data: { confirm: 'Congrats on acheiving your goal!' }  %>
+    <% if @main_goal.goal_steps.length < 5 %>
+    <%= render 'goal_step_form' %>
+    <% end %>
   <% end %>
 
 <%= link_to 'Destroy', @main_goal, method: :delete, data: { confirm: 'Are you sure?' } %>

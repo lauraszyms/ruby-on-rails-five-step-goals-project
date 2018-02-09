@@ -13,19 +13,18 @@ class MainGoalsController < ApplicationController
   def new
     @main_goal = MainGoal.new
     @categories = Category.all
-    @main_goal.goal_steps.build
-    @main_goal.goal_steps.build
-    @main_goal.goal_steps.build
-    @main_goal.goal_steps.build
-    @main_goal.goal_steps.build
   end
 
   def create
     @main_goal = MainGoal.create(main_goal_params)
     @main_goal.user_id = current_user.id
-    @main_goal.duedate = @main_goal.created_at+30.day
-    @main_goal.save
-    redirect_to @main_goal
+    @main_goal.duedate = DateTime.now + 30.day
+   if @main_goal.valid?
+      @main_goal.save
+      redirect_to @main_goal
+   else
+    render :new
+   end
   end
 
   def edit
