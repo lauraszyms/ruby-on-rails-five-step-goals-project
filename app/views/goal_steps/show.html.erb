@@ -1,11 +1,12 @@
-<h1>Goal: <%= @goal_step.title %></h1>
-<p>Stats: <%= @goal_step.status %></p>
-<p>summary: <%= @goal_step.summary %></p>
+<h1>Goal: <%= @goal_step.title.capitalize %></h1>
+<p>Stats: <%= @goal_step.status.capitalize %></p>
+<p>summary: <%= @goal_step.summary.capitalize %></p>
 
-
+<% if current_user.id == @main_goal.user_id %>
 <%= form_for(@goal_step, url: { action: "update" }) do |f| %>
   <%= f.hidden_field :status, value: "Completed" %>
   <%= f.submit "Completed",data: { confirm: 'Congrats on acheiving your goal!' }  %>
+  <% end %>
 <% end %><br>
 
 <%= link_to "Main Goal", main_goal_path(@goal_step.main_goal_id) %><br>

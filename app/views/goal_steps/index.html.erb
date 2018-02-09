@@ -1,11 +1,11 @@
-<h1>Goal Steps for Goal: <%= @main_goal.title %></h1>
+<h1>Goal Steps for Goal: <%= @main_goal.title.capitalize %></h1>
 <ol>
   <% @main_goal.goal_steps.each do |goal_step| %>
-   <li><%= link_to "#{goal_step.title} - #{goal_step.status}", main_goal_goal_step_path(@main_goal, goal_step) %></li>
+   <li><%= link_to "#{goal_step.title.capitalize} - #{goal_step.status}", main_goal_goal_step_path(@main_goal, goal_step) %></li>
 <% end %>
 </ol>
 
-<% if @main_goal.goal_steps.length < 5 %>
+<% if @main_goal.goal_steps.length < 5 && current_user.id == @main_goal.user_id %>
  <%= render '/main_goals/goal_step_form' %>
 <% end %>
 

@@ -21,7 +21,7 @@ class MainGoalsController < ApplicationController
     @main_goal.duedate = DateTime.now + 30.day
    if @main_goal.valid?
       @main_goal.save
-    if @main_goal.goal_steps.length < 5
+    if @main_goal.goal_steps.length < 5 
       redirect_to main_goal_goal_steps_path(@main_goal)
     else
       redirect_to @main_goal

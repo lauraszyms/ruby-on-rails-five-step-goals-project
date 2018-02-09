@@ -6,13 +6,13 @@
 <h3>Community Goals:</h3>
 <ul>
 <% @main_goals.each do |main_goal| %>
-    <li><%= link_to "#{main_goal.title}", main_goal_path(main_goal) %></li>
+    <li><%= link_to "#{main_goal.title.capitalize}", main_goal_path(main_goal) %></li>
 <% end %>
 </ul>
 
 <h3>Goals by Category:</h3>
 <ul>
 <% @categories.each do |category| %>
-  <li><%= link_to category.name, category_path(category) %></li>
+  <li><%= link_to category.name.capitalize, category_path(category) %></li>
 <% end %>
 </ul>
