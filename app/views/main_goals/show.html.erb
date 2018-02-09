@@ -2,11 +2,12 @@
 <h3><%= @main_goal.status %></h3>
 <h3>Due <%= @main_goal.duedate.to_time.strftime('%B %e') %></h3>
 <p><%= @main_goal.summary %></p>
+<% @main_goal.categories.each do |category| %>
+   <p><%= link_to "#{category.name}", category_path(category) %></p>
+<% end %>
 
  <h3>Goals Steps:</h3>
- <% @main_goal.goal_steps.each do |goal_step| %>
-    <p><%= link_to "#{goal_step.title} - #{goal_step.status}", main_goal_goal_step_path(@main_goal, goal_step) %></p>
- <% end %>
+ <p><%= link_to "Goal Steps", main_goal_goal_steps_path(@main_goal) %></p>
 
  <%= form_for @main_goal do |f| %>
     <%= f.hidden_field :status, value: "Completed" %>

@@ -18,7 +18,7 @@
   <%= f.text_field :title %><br>
   <%= f.label "Summary" %><br>
   <%= f.text_area :summary %><br><br>
-  Categories: 
+  Categories:
   <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %><br>
   New Category:
   <%= f.fields_for :categories, @main_goal.categories.build do |categories| %>

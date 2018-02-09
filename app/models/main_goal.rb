@@ -12,17 +12,9 @@ class MainGoal < ApplicationRecord
   scope :overdue, -> { where('created_at >= ?', Time.now - 31.days) }
 
   def categories_attributes=(category_attributes)
-    category_attributes.values.each do |category_attribute|
-      category = Category.find_or_create_by(category_attribute)
+    attribute = category_attributes[0]
+      category = Category.find_or_create_by(attribute)
       self.categories << category
-    end
-  end
-
-  def goal_step_attributes=(goal_step_attributes)
-    goal_step_attributes.values.each do |goal_step_attribute|
-      goal_step = GoalStep.find_or_create_by(goal_step_attribute)
-      self.goal_steps << goal_step
-    end
   end
 
 end

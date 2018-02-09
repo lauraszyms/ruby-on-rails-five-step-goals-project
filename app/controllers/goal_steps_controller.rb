@@ -2,7 +2,7 @@ class GoalStepsController < ApplicationController
   before_action :set_goal_step, only: [:show, :edit, :update, :destroy]
 
   def index
-   @main_goals = GoalStep.all
+   @main_goal = MainGoal.find_by(:id => params[:main_goal_id])
   end
 
   def show
@@ -11,13 +11,10 @@ class GoalStepsController < ApplicationController
 
   def new
     @goal_step = GoalStep.new
+    @main_goal = MainGoal.find_by(@goal_step.main_goal_id)
   end
 
   def create
-    @goal_step = GoalStep.create(goal_step_params)
-    @goal_step.status = "Incomplete"
-    @goal_step.save
-    redirect_to main_goal_path(@goal_step.main_goal_id)
   end
 
   def edit

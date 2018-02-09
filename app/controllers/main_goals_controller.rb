@@ -51,8 +51,10 @@ class MainGoalsController < ApplicationController
         :summary,
         :status,
         :duedate,
+        :user_id,
         category_ids:[],
         categories_attributes: [:name],
+        goal_step_ids:[],
         goal_steps_attributes: [
           :title,
           :summary,
