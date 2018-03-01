@@ -4,6 +4,7 @@ class GoalStepsController < ApplicationController
 
   def index
     @goal_steps = @main_goal.goal_steps
+    render 'goal_steps/index', :layout => false
   end
 
   def show
