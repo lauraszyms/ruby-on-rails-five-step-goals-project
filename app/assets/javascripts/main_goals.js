@@ -14,8 +14,10 @@ $(document).ready(function(){
   })
 
 $(document).on('click', '.load_goal_step', function (e) {
-    alert("It's Working!")
-    // e.preventDefault();
+    $.get(this.href).then(function(json){
+    let newStep = new GoalStep(this.id, this.title, this.summary, this.status, this.main_goal.id)
+    $h1.html("")
+    $h1.append(newStep.title)
   })
 
   class GoalStep {

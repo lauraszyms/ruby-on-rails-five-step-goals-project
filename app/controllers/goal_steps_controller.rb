@@ -9,6 +9,7 @@ class GoalStepsController < ApplicationController
 
   def show
    @user = current_user
+   render json: @goal_step
   end
 
   def new
