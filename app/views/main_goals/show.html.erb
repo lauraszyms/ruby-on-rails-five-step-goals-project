@@ -11,6 +11,10 @@
  <h4>Goals Steps:</h4>
  <p><%= link_to "Goal Steps", main_goal_goal_steps_path(@main_goal), :class => "load_goal_steps" %></p>
 
+<div class="goal_steps">
+</div>
+
+
 <% if current_user.id == @main_goal.user_id %>
  <%= form_for @main_goal do |f| %>
     <%= f.hidden_field :status, value: "Completed" %>

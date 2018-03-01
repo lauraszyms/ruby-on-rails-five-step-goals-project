@@ -6,7 +6,7 @@ $(document).ready(function(){
       method: "GET",
       url: this.href
     }).done(function(resp){
-      $("body").append(resp)
+      $("div.goal_steps").append(resp)
     })
 
 
