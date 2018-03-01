@@ -14,11 +14,15 @@ $(document).ready(function(){
   })
 
 $(document).on('click', '.load_goal_step', function (e) {
-    $.get(this.href).then(function(json){
-    let newStep = new GoalStep(this.id, this.title, this.summary, this.status, this.main_goal.id)
+  $.get(this).then(function(json) {
+    let $h1 = $("div.goal_step_info h1")
     $h1.html("")
-    $h1.append(newStep.title)
+    let newStep = new GoalStep(json.id, json.title, json.summary, json.status, json.main_goal.id)
+    $h1.html("")
+    $h1.append("Hello")
   })
+  e.preventDefault();
+})
 
   class GoalStep {
    constructor (id, title, summary, status, main_goal_id) {
@@ -29,7 +33,7 @@ $(document).on('click', '.load_goal_step', function (e) {
     this.main_goal_id = main_goal_id;
   }
 
-   stepLink() {
+   showGoal() {
     return 'http://localhost:3000/main_goals/1/goal_step/1'
     }
   };
