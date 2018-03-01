@@ -9,10 +9,7 @@ class GoalStepsController < ApplicationController
 
   def show
    @user = current_user
-   respond_to do |format|
-     format.html { render :show }
-     format.json { render json: @goal_step}
-   end
+   render json: @goal_step
   end
 
   def new

@@ -13,16 +13,21 @@ $(document).ready(function(){
      e.preventDefault();
   })
 
-// $(document).on('click', '.load_goal_step', function (e) {
-//   $.get(this).then(function(json) {
-//     let $h1 = $("div.goal_step_info h1")
-//     $h1.html("")
-//     let newStep = new GoalStep(json.id, json.title, json.summary, json.status, json.main_goal.id)
-//     $h1.html("")
-//     $h1.append(newStep.title)
-//   })
-//   e.preventDefault();
-// })
+$(document).on('click', '.load_goal_step', function (e) {
+  $.get(this).then(function(json) {
+    let $h1 = $("div.goal_step_info h1")
+    let $ol = $("div.goal_steps ol")
+    let $href = $("a.load_goal_steps")
+    $h1.html("")
+    $ol.html("")
+    $href.html("")
+    let newStep = new GoalStep(json.id, json.title, json.summary, json.status, json.main_goal.id)
+
+    $h1.html("")
+    $h1.append(newStep.title)
+  })
+  e.preventDefault();
+})
 
   class GoalStep {
    constructor (id, title, summary, status, main_goal_id) {
