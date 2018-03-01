@@ -4,7 +4,7 @@ class GoalStepsController < ApplicationController
 
   def index
     @goal_steps = @main_goal.goal_steps
-    render :json => @goal_steps
+    render json: @goal_steps
   end
 
   def show
