@@ -14,7 +14,7 @@ $(document).ready(function(){
      e.preventDefault();
   })
 
-  $("a.load_goal_step").on("click", function(e) {
+$(document).on('click', '.load_goal_step', function (e) {
     alert("It's Working!")
     e.preventDefault();
   })
