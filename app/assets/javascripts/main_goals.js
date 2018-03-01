@@ -6,8 +6,9 @@ $(document).ready(function(){
 
       var $ol = $("div.goal_steps ol")
       $ol.html("")
-      json.forEach(function(goal_step){
-      $ol.append("<li>" + goal_step.stepLink + "</li>")
+      json.forEach(function(gs){
+       let newGoal = new GoalStep(gs.id, gs.title, gs.summary, gs.status)
+      $ol.append("<li>" + newGoal.stepLink + "</li>")
       })
     })
 
@@ -16,14 +17,14 @@ $(document).ready(function(){
   })
 
   class GoalStep {
-   constructor (id, summary, status, main_goal_id) {
+   constructor (id, title, summary, status) {
     this.id = id;
+    this.title = title;
     this.summary = summary;
     this.status = status;
-    this.main_goal_id = main_goal_id;
    }
 
-   stepLink = function(){
+   stepLink(){
      return `link_to ${this.name}, main_goal_goal_step_path(${this.id});`
    };
   };
