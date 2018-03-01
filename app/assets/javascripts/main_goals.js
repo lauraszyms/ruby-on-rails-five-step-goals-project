@@ -1,8 +1,9 @@
 $(document).ready(function(){
   $("a.load_goal_steps").on("click", function(e) {
+
     $.ajax({
-      method: "GET"
-      url:
+      method: "GET",
+      url: this.href
     }).done(function(data){
       console.log(data)
     })
