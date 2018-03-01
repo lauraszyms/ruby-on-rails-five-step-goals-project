@@ -8,7 +8,7 @@ $(document).ready(function(){
       $ol.html("")
       json.forEach(function(gs){
        let newGoal = new GoalStep(gs.id, gs.title, gs.summary, gs.status)
-      $ol.append("<li>" + newGoal.stepLink + "</li>")
+      $ol.append('<li><a href="' + newGoal.stepLink + '">' + newGoal.title + '</a></li>');
       })
     })
 
@@ -25,7 +25,7 @@ $(document).ready(function(){
    }
 
    stepLink(){
-     return `link_to ${this.name}, main_goal_goal_step_path(${this.id});`
+     return `main_goal_goal_step_path(${this.id})`;
    };
   };
 
