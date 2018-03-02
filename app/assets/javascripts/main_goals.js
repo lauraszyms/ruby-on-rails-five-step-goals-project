@@ -1,6 +1,10 @@
 let main_id= 0;
 
 $(document).ready(function(){
+  $(function(){
+    $('.new_goal_step').hide()
+  })
+
   $("a.load_goal_steps").on("click", function(e) {
 
 
