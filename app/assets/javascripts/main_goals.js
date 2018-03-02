@@ -5,6 +5,7 @@ $(document).ready(function(){
 
   $("a.load_goal_steps").on("click", function(e) {
      $('.new_goal_step').show()
+     $('.submit_goal').removeAttr('data-disable-with');
      $.get(this.href).then(function(json){
       let $ol = $("div.goal_steps ol")
       let $p = $("div.goal_steps p")
@@ -109,16 +110,23 @@ $(document).on('click', '.load_goal_step', function (e) {
   }
 
 $(document).on('submit', '.new_goal_step', function (event) {
-     $.post( this.action, $(this).serialize(), function(resp){
-         $("#goal_step_title").val("")
-         $("#goal_step_summary").val("")
-         let $ol = $("div.categories ol")
-         let newGoalStep = new GoalStep(resp.id, resp.title, resp.summary, resp.status, resp.main_goal.id)
-         $ol.append(newGoalStep.goalLink())
-     })
+   $.ajax({
+     type: "POST",
+     url: this.action,
+     data: $(this).serialize(),
+     success: function(resp){
+      $("#goal_step_title").val("")
+      $("#goal_step_summary").val("")
+      $('.submit_goal').removeAttr('data-disable-with');
+      let $ol = $("div.goal_steps ol")
+      let newGoalStep = new GoalStep(resp.id, resp.title, resp.summary, resp.status, resp.main_goal.id)
 
-   event.preventDefault();
+      $ol.append(newGoalStep.goalLink())
 
+
+       }
     })
+     event.preventDefault();
+  })
 
 });
