@@ -13,7 +13,6 @@
 
   30.times do
     MainGoal.create(
-      :id => Faker::Number.unique.number,
       :title => Faker::Hipster.sentence,
       :summary => Faker::Hipster.sentences,
       :user_id => Faker::Number.between(1, 10),
