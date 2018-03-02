@@ -13,7 +13,7 @@ $(document).ready(function(){
       // $p.append(())
       json.forEach(function(gs){
        let newGoal = new GoalStep(gs.id, gs.title, gs.summary, gs.status, gs.main_goal.id)
-      $ol.append('<li><a class="load_goal_step" href="http://localhost:3000/main_goals/1/goal_steps/1">' + newGoal.title + '</a></li>');
+      $ol.append(newGoal.goalLink());
       })
     })
      e.preventDefault();
@@ -38,6 +38,7 @@ $(document).ready(function(){
         goals.forEach(function(goal_array) {
           goal_array.forEach(function(goal){
             if (goal.id === main_id) {
+              debugger
           $ul.append('<li>' + goal.title + '</li>')
          }
         })
@@ -74,8 +75,8 @@ $(document).on('click', '.load_goal_step', function (e) {
     this.main_goal_id = main_goal_id;
   }
 
-   showGoal() {
-    return 'http://localhost:3000/main_goals/1/goal_step/1'
+   goalLink() {
+    return '<li><a class="load_goal_step" href="http://localhost:3000/main_goals/' + this.main_goal_id + '/goal_steps/' + this.id + '">' + this.title + '</a></li>'
     }
   };
 
@@ -86,10 +87,10 @@ $(document).on('click', '.load_goal_step', function (e) {
     this.main_goals = main_goals;
   }
 
-   mainGoals() {
-     const map1 = this.main_goals.map(x => x * 2)
-    return 'http://localhost:3000/main_goals/1/goal_step/1'
-    }
+  //  mainGoals() {
+  //    const map1 = this.main_goals.map(x => x * 2)
+  //   return 'http://localhost:3000/main_goals/1/goal_steps/1'
+  //   }
   };
 
 $(document).on('submit', '.new_goal_step', function (event) {
