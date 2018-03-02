@@ -23,7 +23,7 @@ class MainGoalsController < ApplicationController
    if @main_goal.valid?
       @main_goal.save
     if @main_goal.goal_steps.length < 5
-      redirect_to main_goal_goal_steps_path(@main_goal)
+      redirect_to @main_goal
     else
       redirect_to @main_goal
     end

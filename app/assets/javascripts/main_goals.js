@@ -38,7 +38,6 @@ $(document).ready(function(){
         goals.forEach(function(goal_array) {
           goal_array.forEach(function(goal){
             if (goal.id === main_id) {
-              debugger
           $ul.append('<li>' + goal.title + '</li>')
          }
         })
