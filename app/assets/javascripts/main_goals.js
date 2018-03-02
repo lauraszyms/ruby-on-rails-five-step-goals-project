@@ -6,11 +6,9 @@ $(document).ready(function(){
 
     $.get(this.href).then(function(json){
       let $ol = $("div.goal_steps ol")
-      let $p = $("div.goal_steps p")
       let $href = $("a.load_goal_steps")
       $ol.html("")
       $href.hide()
-      // $p.append(())
       json.forEach(function(gs){
        let newGoal = new GoalStep(gs.id, gs.title, gs.summary, gs.status, gs.main_goal.id)
       $ol.append(newGoal.goalLink());
@@ -84,12 +82,7 @@ $(document).on('click', '.load_goal_step', function (e) {
     this.id = id;
     this.name = name;
     this.main_goals = main_goals;
-  }
-
-  //  mainGoals() {
-  //    const map1 = this.main_goals.map(x => x * 2)
-  //   return 'http://localhost:3000/main_goals/1/goal_steps/1'
-  //   }
+   }
   };
 
 $(document).on('submit', '.new_goal_step', function (event) {
