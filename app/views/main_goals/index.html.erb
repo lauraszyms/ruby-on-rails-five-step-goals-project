@@ -10,9 +10,15 @@
 <% end %>
 </ul>
 
-<h3>Goals by Category:</h3>
-<ul>
-<% @categories.each do |category| %>
-  <li><%= link_to category.name.capitalize, category_path(category) %></li>
-<% end %>
-</ul>
+
+<h3><%= link_to "Goals by Category", categories_path, :class => "load_categories" %></h3>
+
+<div class="categories">
+  <ol>
+  </ol>
+</div>
+
+<div class="category_goals">
+  <ul>
+  </ul>
+</div>

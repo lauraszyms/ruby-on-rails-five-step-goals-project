@@ -1,3 +1,5 @@
+let main_id= 0;
+
 $(document).ready(function(){
   $("a.load_goal_steps").on("click", function(e) {
 
@@ -16,6 +18,36 @@ $(document).ready(function(){
     })
      e.preventDefault();
   })
+
+  $(document).on('click', '.load_categories', function (e) {
+
+    $.get(this.href).then(function(json){
+
+      let $ol = $("div.categories ol")
+      let $ul = $("div.category_goals ul")
+      $ol.html("")
+      $ul.html("")
+      let goals = []
+      json.forEach(function(c){
+       let newCategory = new Category(c.id, c.name, c.main_goals)
+       goals.push(c.main_goals)
+       $ol.append('<li><a class="load_category" id="' + c.id + '"href="">' + newCategory.name + '</a></li>');
+     })
+     $(document).on('click', '.load_category', function (e) {
+       let main_id = parseInt(this.id)
+        goals.forEach(function(goal_array) {
+          goal_array.forEach(function(goal){
+            if (goal.id === main_id) {
+          $ul.append('<li>' + goal.title + '</li>')
+         }
+        })
+      })
+      e.preventDefault();
+     })
+
+  })
+  e.preventDefault();
+})
 
 $(document).on('click', '.load_goal_step', function (e) {
   $.get(this).then(function(json) {
@@ -43,6 +75,19 @@ $(document).on('click', '.load_goal_step', function (e) {
   }
 
    showGoal() {
+    return 'http://localhost:3000/main_goals/1/goal_step/1'
+    }
+  };
+
+  class Category {
+   constructor (id, name, main_goals) {
+    this.id = id;
+    this.name = name;
+    this.main_goals = main_goals;
+  }
+
+   mainGoals() {
+     const map1 = this.main_goals.map(x => x * 2)
     return 'http://localhost:3000/main_goals/1/goal_step/1'
     }
   };
