@@ -21,7 +21,7 @@ class GoalStepsController < ApplicationController
     @goal_step = GoalStep.new(goal_step_params)
     @goal_step.main_goal_id = @main_goal.id
     @goal_step.save
-    render 'goal_steps/show', :layout => false
+    render json: @goal_step
   end
 
   def update
