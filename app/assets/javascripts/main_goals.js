@@ -8,6 +8,7 @@ $(document).ready(function(){
       let $href = $("a.load_goal_steps")
       $ol.html("")
       $href.hide()
+      $p.append(goalStepForm())
       json.forEach(function(gs){
        let newGoal = new GoalStep(gs.id, gs.title, gs.summary, gs.status, gs.main_goal.id)
       $ol.append('<li><a class="load_goal_step" href="http://localhost:3000/main_goals/1/goal_steps/1">' + newGoal.title + '</a></li>');
@@ -20,14 +21,14 @@ $(document).on('click', '.load_goal_step', function (e) {
   $.get(this).then(function(json) {
     let $h1 = $("div.goal_step_info h1")
     let $h3 = $("div.goal_step_info h3")
-    let $p = $("div.goal_step_info p")
+    let $h4 = $("div.goal_step_info h4")
     $h1.html("")
     $h3.html("")
-    $p.html("")
+    $h4.html("")
     let newStep = new GoalStep(json.id, json.title, json.summary, json.status, json.main_goal.id)
     $h1.append(newStep.title)
     $h3.append(newStep.status)
-    $p.append(newStep.summary)
+    $h4.append(newStep.summary)
   })
   e.preventDefault();
 })
@@ -46,5 +47,8 @@ $(document).on('click', '.load_goal_step', function (e) {
     }
   };
 
+function goalStepForm() {
+    return '<form> <textarea></textarea> <input type="submit"/> </form>'
+  }
 
 });

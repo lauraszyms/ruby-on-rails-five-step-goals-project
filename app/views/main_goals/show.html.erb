@@ -15,14 +15,27 @@
 <div class="goal_steps">
   <ol>
   </ol>
-  <p> <%= render 'goal_step_form' %> </p>
+  <p></p>
 </div>
 
 <div class="goal_step_info">
   <h1></h1>
   <h3></h3>
-  <p></p>
+  <h4></h4>
 </div>
+
+<%= form_for @main_goal do |f| %>
+<h4>Add Another Goal Step:</h4>
+<%= f.fields_for :goal_steps, @main_goal.goal_steps.build do |goal_step_fields| %>
+ ~ Goal Step Title ~<br>
+ <%= goal_step_fields.text_field :title %><br>
+ ~ Describe Your Goal Step ~<br>
+ <%= goal_step_fields.text_field :summary %><br>
+<% end %>
+<%= f.submit %>
+<% end %>
+
+
 
 
 

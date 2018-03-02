@@ -1,6 +1,5 @@
  <%= form_for @main_goal do |f| %>
- <h4>Add Your Five Goal Steps:</h4>
- Goal steps are small steps to make towards your larger goal!<br><br>
+ <h4>Add Another Goal Step:</h4>
 <%= f.fields_for :goal_steps, @main_goal.goal_steps.build do |goal_step_fields| %>
   ~ Goal Step Title ~<br>
   <%= goal_step_fields.text_field :title %><br>
