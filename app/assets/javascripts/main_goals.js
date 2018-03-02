@@ -92,17 +92,22 @@ $(document).on('click', '.load_goal_step', function (e) {
     }
   };
 
-});
+$(document).on('submit', '.new_goal_step', function (event) {
 
-// $(function() {
-//   $(".new_goal_step").submit (function(event){
-//     event.preventDefault();
-//     var values = $(this).serialize()
-//
-//     var setting = $.post('/goal_steps', values)
-//     setting.done(function(data) {
-//       $("#goalTitle").text(data.title)
-//       $("#goalSummary").text(data.summary)
-//     })
-//   })
-// })
+      $.ajax({
+        type: "POST",
+        url: this.action,
+        data: $(this).serialize(),
+        success: function(response){
+          $("#goal_step_title").val("")
+          $("#goal_step_summary").val("")
+          let $ol = $("div.categories ol")
+          $ol.append(response)
+        }
+      })
+
+   event.preventDefault();
+
+    })
+
+});
