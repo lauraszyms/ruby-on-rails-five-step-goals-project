@@ -23,9 +23,6 @@ class MainGoalsController < ApplicationController
    if @main_goal.valid?
       @main_goal.save
       redirect_to @main_goal
-    else
-      redirect_to @main_goal
-    end
    else
     render :new
    end
