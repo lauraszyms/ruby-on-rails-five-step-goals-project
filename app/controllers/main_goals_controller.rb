@@ -8,6 +8,7 @@ class MainGoalsController < ApplicationController
 
   def show
    @user = current_user
+   @goal_step = GoalStep.new
   end
 
   def new

@@ -92,25 +92,17 @@ $(document).on('click', '.load_goal_step', function (e) {
     }
   };
 
-// function goalStepForm() {
-//     return '<form> <textarea></textarea> <input type="submit"/> </form>'
-//   }
-//
 });
+
+// $(function() {
+//   $(".new_goal_step").submit (function(event){
+//     event.preventDefault();
+//     var values = $(this).serialize()
 //
-// $(function(){
-//   $(".edit_main_goal").on("submit", function(e){
-//
-//     $.ajax({
-//       type: "POST",
-//       url: this.action,
-//       data: this.serialize(),
-//       success: function(response) {
-//         console.log(response)
-//       }
-//
+//     var setting = $.post('/goal_steps', values)
+//     setting.done(function(data) {
+//       $("#goalTitle").text(data.title)
+//       $("#goalSummary").text(data.summary)
 //     })
-//
-//     e.preventDefault();
 //   })
 // })

@@ -17,6 +17,13 @@ class GoalStepsController < ApplicationController
     @goal_step = GoalStep.new
   end
 
+  def create
+    @goal_step = GoalStep.new(goal_step_params)
+    @goal_step.main_goal_id = @main_goal.id
+    @goal_step.save
+    # render json: @goal_step
+  end
+
   def update
     @goal_step.update(goal_step_params)
     redirect_to main_goal_goal_step_path(@main_goal, @goal_step)
