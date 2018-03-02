@@ -1,6 +1,6 @@
 class MainGoalSerializer < ActiveModel::Serializer
   attributes :id, :summary, :status, :duedate
   belongs_to :user
-  has_many :categories
+  belongs_to :categories, serializer: MainGoalCategorySerializer
   has_many :goal_steps
 end
