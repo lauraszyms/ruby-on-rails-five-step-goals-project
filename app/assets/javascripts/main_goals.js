@@ -1,14 +1,14 @@
 let main_id= 0;
 
 $(document).ready(function(){
+
   $(function(){
     $('.new_goal_step').hide()
   })
 
   $("a.load_goal_steps").on("click", function(e) {
-
-
-    $.get(this.href).then(function(json){
+      $('.new_goal_step').show()
+     $.get(this.href).then(function(json){
       let $ol = $("div.goal_steps ol")
       let $href = $("a.load_goal_steps")
       $ol.html("")
