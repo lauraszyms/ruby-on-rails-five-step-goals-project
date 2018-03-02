@@ -97,19 +97,14 @@ $(document).on('click', '.load_goal_step', function (e) {
   };
 
 $(document).on('submit', '.new_goal_step', function (event) {
-
-      $.ajax({
-        type: "POST",
-        url: this.action,
-        data: $(this).serialize(),
-        success: function(resp){
-          $("#goal_step_title").val("")
-          $("#goal_step_summary").val("")
-          let $ol = $("div.categories ol")
-          let newGoalStep = new GoalStep(resp.id, resp.title, resp.summary, resp.status, resp.main_goal.id)
-          $ol.append(newGoalStep.goalLink())
-        }
-      })
+     $.post( this.action, $(this).serialize(), function(resp){
+         $("#goal_step_title").val("")
+         $("#goal_step_summary").val("")
+         let $ol = $("div.categories ol")
+         let newGoalStep = new GoalStep(resp.id, resp.title, resp.summary, resp.status, resp.main_goal.id)
+         $ol.append(newGoalStep.goalLink())
+         debugger
+     })
 
    event.preventDefault();
 
