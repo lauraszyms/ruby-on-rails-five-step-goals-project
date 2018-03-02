@@ -16,15 +16,16 @@ $(document).ready(function(){
 $(document).on('click', '.load_goal_step', function (e) {
   $.get(this).then(function(json) {
     let $h1 = $("div.goal_step_info h1")
-    let $ol = $("div.goal_steps ol")
-    let $href = $("a.load_goal_steps")
+    let $h3 = $("div.goal_step_info h3")
+    let $p = $("div.goal_step_info p")
     $h1.html("")
-    $ol.html("")
-    $href.html("")
+    $h3.html("")
+    $p.html("")
     let newStep = new GoalStep(json.id, json.title, json.summary, json.status, json.main_goal.id)
-
     $h1.html("")
     $h1.append(newStep.title)
+    $h3.append(newStep.status)
+    $p.append(newStep.summary)
   })
   e.preventDefault();
 })
