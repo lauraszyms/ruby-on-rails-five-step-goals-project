@@ -1,5 +1,3 @@
-let main_id= 0;
-
 $(document).ready(function(){
   $(function(){
     $('.new_goal_step').hide()
@@ -27,13 +25,10 @@ $(document).ready(function(){
     $.get(this.href).then(function(json){
 
       let $ol = $("div.categories ol")
-      let $ul = $("div.category_goals ul")
       $ol.html("")
-      $ul.html("")
       let goals = []
       json.forEach(function(c){
        let newCategory = new Category(c.id, c.name, c.main_goals)
-       goals.push(c.main_goals)
        $ol.append(newCategory.categoryLink());
      })
    })
@@ -43,16 +38,13 @@ $(document).ready(function(){
      $(document).on('click', '.load_category', function (e) {
     //
        $.get(this.href).then(function(json){
-         debugger
-       let main_id = parseInt(this.id)
-        goals.forEach(function(goal_array) {
-    // // //       debugger
-          goal_array.forEach(function(goal){
-            let newMainGoal = new MainGoal(goal.id, goal.title, goal.summary, goal.status, goal.duedate)
-            if (newMainGoal.id === main_id) {
+       let $ul = $("div.category_goals ul")
+       $ul.html("")
+       let main_id = parseInt(json.id)
+       let goals = json.main_goals
+        goals.forEach(function(goal) {
+          let newMainGoal = new MainGoal(goal.id, goal.title, goal.summary, goal.status, goal.duedate)
           $ul.append(newMainGoal.mainGoalLink())
-           }
-         })
         })
       })
       e.preventDefault();
@@ -104,14 +96,14 @@ $(document).on('click', '.load_goal_step', function (e) {
   class MainGoal {
     constructor (id, title, summary, status, duedate) {
      this.id = id;
-     this.name = title;
+     this.title = title;
      this.summary = summary;
      this.status = status;
      this.duedate = duedate;
     }
 
     mainGoalLink() {
-     return '<li><a class="load_goal_step" href="http://localhost:3000/main_goals/'+ this.id + '">' + this.title + '</a></li>'
+     return '<li><a class="category_goals" href="http://localhost:3000/main_goals/'+ this.id + '">' + this.title + '</a></li>'
      }
 
   }
