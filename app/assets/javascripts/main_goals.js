@@ -34,25 +34,29 @@ $(document).ready(function(){
       json.forEach(function(c){
        let newCategory = new Category(c.id, c.name, c.main_goals)
        goals.push(c.main_goals)
-       $ol.append('<li><a class="load_category" id="' + c.id + '"href="">' + newCategory.name + '</a></li>');
+       $ol.append(newCategory.categoryLink());
      })
+   })
+   e.preventDefault();
+ })
+
      $(document).on('click', '.load_category', function (e) {
+    //
+       $.get(this.href).then(function(json){
+         debugger
        let main_id = parseInt(this.id)
         goals.forEach(function(goal_array) {
+    // // //       debugger
           goal_array.forEach(function(goal){
-            debugger
-            if (goal.id === main_id) {
-
-          $ul.append('<li>' + goal.title + '</li>')
-         }
+            let newMainGoal = new MainGoal(goal.id, goal.title, goal.summary, goal.status, goal.duedate)
+            if (newMainGoal.id === main_id) {
+          $ul.append(newMainGoal.mainGoalLink())
+           }
+         })
         })
       })
       e.preventDefault();
-     })
-
-  })
-  e.preventDefault();
-})
+    })
 
 $(document).on('click', '.load_goal_step', function (e) {
   $.get(this).then(function(json) {
@@ -90,6 +94,11 @@ $(document).on('click', '.load_goal_step', function (e) {
     this.name = name;
     this.main_goals = main_goals;
    }
+
+   categoryLink() {
+    return '<li><a class="load_category" href="http://localhost:3000/categories/'+ this.id + '">' + this.name + '</a></li>'
+    }
+
   };
 
   class MainGoal {
