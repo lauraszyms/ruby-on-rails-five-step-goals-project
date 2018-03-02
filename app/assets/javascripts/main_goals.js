@@ -52,3 +52,10 @@ function goalStepForm() {
   }
 
 });
+
+$(function(){
+  $("#edit_main_goal_1").on("submit", function(e){
+    alert("Submitted")
+    e.preventDefault();
+  })
+})
