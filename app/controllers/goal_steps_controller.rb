@@ -12,6 +12,10 @@ class GoalStepsController < ApplicationController
    render json: @goal_step
   end
 
+  def create
+
+  end
+
   def new
     @goal_step = GoalStep.new
   end
