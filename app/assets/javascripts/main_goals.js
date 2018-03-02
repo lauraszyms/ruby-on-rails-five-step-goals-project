@@ -40,6 +40,7 @@ $(document).ready(function(){
        let main_id = parseInt(this.id)
         goals.forEach(function(goal_array) {
           goal_array.forEach(function(goal){
+            debugger
             if (goal.id === main_id) {
 
           $ul.append('<li>' + goal.title + '</li>')
@@ -88,13 +89,23 @@ $(document).on('click', '.load_goal_step', function (e) {
     this.id = id;
     this.name = name;
     this.main_goals = main_goals;
-  }
-
-  //  mainGoals() {
-  //    const map1 = this.main_goals.map(x => x * 2)
-  //   return 'http://localhost:3000/main_goals/1/goal_steps/1'
-  //   }
+   }
   };
+
+  class MainGoal {
+    constructor (id, title, summary, status, duedate) {
+     this.id = id;
+     this.name = title;
+     this.summary = summary;
+     this.status = status;
+     this.duedate = duedate;
+    }
+
+    mainGoalLink() {
+     return '<li><a class="load_goal_step" href="http://localhost:3000/main_goals/'+ this.id + '">' + this.title + '</a></li>'
+     }
+
+  }
 
 $(document).on('submit', '.new_goal_step', function (event) {
      $.post( this.action, $(this).serialize(), function(resp){
@@ -103,7 +114,6 @@ $(document).on('submit', '.new_goal_step', function (event) {
          let $ol = $("div.categories ol")
          let newGoalStep = new GoalStep(resp.id, resp.title, resp.summary, resp.status, resp.main_goal.id)
          $ol.append(newGoalStep.goalLink())
-         debugger
      })
 
    event.preventDefault();
