@@ -13,7 +13,7 @@ class MainGoal < ApplicationRecord
 
   def categories_attributes=(category_attributes)
       attribute = category_attributes.values[0]
-      category = Category.find_or_create_by(attribute)
+      category = Category.find_or_create_by(name: attribute)
       self.categories << category
   end
 

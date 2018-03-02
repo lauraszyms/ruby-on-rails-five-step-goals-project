@@ -8,7 +8,7 @@ $(document).ready(function(){
       let $href = $("a.load_goal_steps")
       $ol.html("")
       $href.hide()
-      $p.append(goalStepForm())
+      // $p.append(())
       json.forEach(function(gs){
        let newGoal = new GoalStep(gs.id, gs.title, gs.summary, gs.status, gs.main_goal.id)
       $ol.append('<li><a class="load_goal_step" href="http://localhost:3000/main_goals/1/goal_steps/1">' + newGoal.title + '</a></li>');
@@ -47,15 +47,25 @@ $(document).on('click', '.load_goal_step', function (e) {
     }
   };
 
-function goalStepForm() {
-    return '<form> <textarea></textarea> <input type="submit"/> </form>'
-  }
-
+// function goalStepForm() {
+//     return '<form> <textarea></textarea> <input type="submit"/> </form>'
+//   }
+//
 });
-
-$(function(){
-  $("#edit_main_goal_1").on("submit", function(e){
-    alert("Submitted")
-    e.preventDefault();
-  })
-})
+//
+// $(function(){
+//   $(".edit_main_goal").on("submit", function(e){
+//
+//     $.ajax({
+//       type: "POST",
+//       url: this.action,
+//       data: this.serialize(),
+//       success: function(response) {
+//         console.log(response)
+//       }
+//
+//     })
+//
+//     e.preventDefault();
+//   })
+// })
