@@ -1,15 +1,7 @@
 <h1>Welcome to Five Step Goals!</h1>
 <% if user_signed_in? %>
-<h3>Create a New Goal</h3>
-<%= link_to "Create A New Goal", new_main_goal_path %>
+<h3><%= link_to "Create A New Goal", new_main_goal_path %></h3>
 <% end %>
-<h3>Community Goals:</h3>
-<ul>
-<% @main_goals.each do |main_goal| %>
-    <li><%= link_to "#{main_goal.title.capitalize}", main_goal_path(main_goal), :class => "main_goal_link"  %></li>
-<% end %>
-</ul>
-
 
 <h3><%= link_to "Goals by Category", categories_path, :class => "load_categories" %></h3>
 
@@ -22,3 +14,10 @@
   <ul>
   </ul>
 </div>
+
+<h3>Community Goals:</h3>
+<ul>
+<% @main_goals.each do |main_goal| %>
+    <li><%= link_to "#{main_goal.title.capitalize}", main_goal_path(main_goal), :class => "main_goal_link"  %></li>
+<% end %>
+</ul>
