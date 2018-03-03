@@ -22,8 +22,8 @@ User.create([
   end
 
 
-  30.times do
+  10.times do
     category = Category.create(:name => Faker::Hipster.word)
-    main_goal = @main_goal = MainGoal.find(Faker::Number.between(1, 30))
+    main_goal = @main_goal = MainGoal.find(Faker::Number.between(1, 11))
     main_goal.categories << category
   end
