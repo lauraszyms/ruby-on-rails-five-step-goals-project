@@ -4,17 +4,27 @@
 <h3>Create a New Goal</h3>
 <%= link_to "New Goal", new_main_goal_path %>
 <% end %>
-<h3>All Goals:</h3>
-<% @user.main_goals.each do |main_goal| %>
-    <p><%= link_to "#{main_goal.title} - #{main_goal.status}", main_goal_path(main_goal), :class => "user_main_goals" %></p>
-<% end %>
+<!-- <h3>All Goals:</h3> -->
+<!-- # <% @user.main_goals.each do |main_goal| %>
+#   <ul>
+#     <li><%= link_to "#{main_goal.title} - #{main_goal.status}", main_goal_path(main_goal), :class => "user_main_goals" %></li>
+#   </ul>
+# <% end %> -->
 
 <!-- <h3>Overdue Goals:</h3>
 <% @overdue.each do |goal| %>
     <p><%= link_to "#{goal.title} - #{goal.status}", main_goal_path(goal) %></p>
 <% end %> -->
+<h3>Goals In Progress:</h3>
+<% @in_progress.each do |goal| %>
+ <ul>
+    <li><%= link_to "#{goal.title} - #{goal.status}", main_goal_path(goal), :class => "user_main_goals"  %></li>
+ </ul>
+<% end %>
 
 <h3>Completed Goals:</h3>
 <% @completed.each do |goal| %>
-    <p><%= link_to "#{goal.title} - #{goal.status}", main_goal_path(goal), :class => "user_main_goals"  %></p>
+ <ul>
+    <li><%= link_to "#{goal.title} - #{goal.status}", main_goal_path(goal), :class => "user_main_goals"  %></li>
+ </ul>
 <% end %>
