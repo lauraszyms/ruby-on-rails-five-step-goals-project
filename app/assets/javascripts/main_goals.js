@@ -10,6 +10,9 @@ $(document).ready(function(){
     $(".user_main_goals").on("click", function(e) {
       location.reload()
     })
+    $(".header_links").on("click", function(e) {
+      location.reload()
+    })
   })
 
   $("a.load_goal_steps").on("click", function(e) {
