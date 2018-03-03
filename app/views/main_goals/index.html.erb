@@ -6,7 +6,7 @@
 <h3>Community Goals:</h3>
 <ul>
 <% @main_goals.each do |main_goal| %>
-    <li><%= link_to "#{main_goal.title.capitalize}", main_goal_path(main_goal) %></li>
+    <li><%= link_to "#{main_goal.title.capitalize}", main_goal_path(main_goal), :class => "main_goal_link"  %></li>
 <% end %>
 </ul>
 

@@ -1,6 +1,9 @@
 $(document).ready(function(){
   $(function(){
     $('.new_goal_step').hide()
+    $(".main_goal_link").on("click", function(e) {
+      location.reload()
+    })
   })
 
   $("a.load_goal_steps").on("click", function(e) {
