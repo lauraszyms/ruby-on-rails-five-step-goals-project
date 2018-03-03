@@ -15,7 +15,7 @@ User.create([
  30.times do
     MainGoal.create(
       :title => Faker::Hipster.sentence,
-      :summary => Faker::Hipster.sentences,
+      :summary => Faker::Hipster.sentence,
       :user_id => Faker::Number.between(1, 30),
       :duedate => DateTime.now
       )
