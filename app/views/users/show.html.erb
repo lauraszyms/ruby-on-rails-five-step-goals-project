@@ -6,15 +6,15 @@
 <% end %>
 <h3>All Goals:</h3>
 <% @user.main_goals.each do |main_goal| %>
-    <p><%= link_to "#{main_goal.title} - #{main_goal.status}", main_goal_path(main_goal) %></p>
+    <p><%= link_to "#{main_goal.title} - #{main_goal.status}", main_goal_path(main_goal), :class => "user_main_goals" %></p>
 <% end %>
 
-<h3>Overdue Goals:</h3>
+<!-- <h3>Overdue Goals:</h3>
 <% @overdue.each do |goal| %>
     <p><%= link_to "#{goal.title} - #{goal.status}", main_goal_path(goal) %></p>
-<% end %>
+<% end %> -->
 
 <h3>Completed Goals:</h3>
 <% @completed.each do |goal| %>
-    <p><%= link_to "#{goal.title} - #{goal.status}", main_goal_path(goal) %></p>
+    <p><%= link_to "#{goal.title} - #{goal.status}", main_goal_path(goal), :class => "user_main_goals"  %></p>
 <% end %>
