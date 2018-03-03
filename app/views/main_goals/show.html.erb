@@ -5,7 +5,10 @@
 
 <h4>Categories:</h4>
  <% @main_goal.categories.each do |category| %>
-    <p><%= link_to "#{category.name.capitalize}", category_path(category) %></p>
+  <ul>
+    <li> <%= category.name %> </li>
+  </ul>
+    <!-- <p><%= link_to "#{category.name.capitalize}", category_path(category), :class => "load_category" %></p> -->
  <% end %>
 
 
