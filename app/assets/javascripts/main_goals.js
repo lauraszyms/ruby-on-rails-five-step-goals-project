@@ -4,6 +4,9 @@ $(document).ready(function(){
     $(".main_goal_link").on("click", function(e) {
       location.reload()
     })
+    $(".category_goals").on("click", function(e) {
+      location.reload()
+    })
   })
 
   $("a.load_goal_steps").on("click", function(e) {
