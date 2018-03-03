@@ -16,7 +16,7 @@ User.create([
     MainGoal.create(
       :title => Faker::Hipster.sentence,
       :summary => Faker::Hipster.sentence,
-      :user_id => Faker::Number.between(1, 30),
+      :user_id => Faker::Number.between(1, 10),
       :duedate => DateTime.now
       )
   end
@@ -24,6 +24,12 @@ User.create([
 
   10.times do
     category = Category.create(:name => Faker::Hipster.word)
-    main_goal = @main_goal = MainGoal.find(Faker::Number.between(1, 11))
+    main_goal = MainGoal.find(Faker::Number.between(1, 11))
+    main_goal.categories << category
+  end
+
+  50.times do
+    category = Category.find(Faker::Number.between(1, 10))
+    main_goal = MainGoal.find(Faker::Number.between(1, 30))
     main_goal.categories << category
   end
