@@ -11,14 +11,17 @@ User.create([
   {:first_name => "Kate",      :last_name => "Nicks",    :username => "jkl", :email => "jkl@gmail.com", :password => "1234567", :password_confirmation => "1234567"}
 ])
 
+counter = 1
  30.times do
     MainGoal.create(
       :title => Faker::Hipster.sentence,
       :summary => Faker::Hipster.sentences,
-      :user_id => Faker::Number.between(1, 10),
+      :user_id => counter,
       :duedate => DateTime.now
       )
+    counter += 1
   end
+
 
   30.times do
     category = Category.create(:name => Faker::Hipster.word)
