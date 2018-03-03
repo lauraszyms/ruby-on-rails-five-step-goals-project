@@ -8,11 +8,9 @@ $(document).ready(function(){
      $('.submit_goal').removeAttr('data-disable-with');
      $.get(this.href).then(function(json){
       let $ol = $("div.goal_steps ol")
-      let $p = $("div.goal_steps p")
       let $href = $("a.load_goal_steps")
       $ol.html("")
       $href.hide()
-      // $p.append(())
       json.forEach(function(gs){
        let newGoal = new GoalStep(gs.id, gs.title, gs.summary, gs.status, gs.main_goal.id)
       $ol.append(newGoal.goalLink());
