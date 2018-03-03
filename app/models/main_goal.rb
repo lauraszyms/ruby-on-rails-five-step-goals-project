@@ -6,7 +6,7 @@ class MainGoal < ApplicationRecord
   accepts_nested_attributes_for :categories
   belongs_to :user, optional: true
   validates :title, presence: true
-  validates :summary, length: { in: 14..150 }
+  validates :summary, length: { in: 8..150 }
   scope :completed, -> { where(status: "Completed") }
   scope :in_progress, -> { where(status: "In Progress") }
   scope :overdue, -> { where('created_at >= ?', Time.now - 31.days) }
